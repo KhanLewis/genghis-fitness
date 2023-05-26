@@ -1,3 +1,5 @@
+import os
+
 """
 Django settings for genghis_fitness project.
 
