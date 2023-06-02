@@ -1,10 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
 
-
 {% block page-header %}
 {% endblock %}
-
 
 {% block content %}
 <div class="container">
@@ -27,9 +25,13 @@
         {% for product in products %}
         <div class="col">
             <div class="card h-100">
-                <img src="{{ product.image.url }}" class="card-img-top" alt="Product Image">
+                <a href="{% url 'product_detail' product.pk %}">
+                    <img src="{{ product.image.url }}" class="card-img-top" alt="Product Image">
+                </a>
                 <div class="card-body">
-                    <h5 class="card-title">{{ product.name|title}}</h5>
+                    <h5 class="card-title">
+                        <a href="{% url 'product_detail' product.pk %}">{{ product.name|title }}</a>
+                    </h5>
                     <p class="card-text">{{ product.description }}</p>
                     <p class="card-price">£{{ product.price }}</p>
                     <button class="btn btn-primary">Add to Cart</button>
