@@ -48,8 +48,10 @@
                   <a class="nav-link" href="{% url 'products_list' %}">Products</a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" href="#">About</a>
-              </li>
+                <a class="nav-link" href="{% url 'cart:cart_detail' %}">
+                    Cart ({{ cart_total }})
+                </a>
+            </li>
               <li class="nav-item">
                   <a class="nav-link" href="#">Contact</a>
               </li>

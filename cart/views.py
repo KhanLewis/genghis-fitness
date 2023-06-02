@@ -2,8 +2,12 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.views import View
 from .models import Cart, CartItem, Product
 
+from django.shortcuts import render, redirect, get_object_or_404
+from django.views import View
+from django.contrib.auth.mixins import LoginRequiredMixin
+from .models import Cart, CartItem, Product
 
-class AddToCartView(View):
+class AddToCartView(LoginRequiredMixin, View):
     def post(self, request, product_id):
         cart, created = Cart.objects.get_or_create(user=request.user)
         product = get_object_or_404(Product, id=product_id)
@@ -17,7 +21,7 @@ class AddToCartView(View):
         return redirect('cart:cart_detail')
 
 
-class RemoveFromCartView(View):
+class RemoveFromCartView(LoginRequiredMixin, View):
     def post(self, request, cart_item_id):
         cart_item = CartItem.objects.get(id=cart_item_id)
         cart_item.delete()
@@ -25,9 +29,13 @@ class RemoveFromCartView(View):
         return redirect('cart:cart_detail')
 
 
-class CartDetailView(View):
+class CartDetailView(LoginRequiredMixin, View):
     def get(self, request):
-        cart = Cart.objects.get(user=request.user)
+        try:
+            cart = Cart.objects.get(user=request.user)
+        except Cart.DoesNotExist:
+            cart = Cart.objects.create(user=request.user)
+
         cart_items = CartItem.objects.filter(cart=cart)
 
         context = {
