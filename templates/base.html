@@ -45,11 +45,11 @@
                   <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" href="{% url 'products_list' %}">Products</a>
+                <a class="nav-link" href="{% url 'products:product_list' %}">Products</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'cart:cart_detail' %}">
-                    Cart ({{ cart_total }})
+                    Cart:{{ cart_total }}
                 </a>
             </li>
               <li class="nav-item">

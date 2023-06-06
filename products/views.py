@@ -1,6 +1,8 @@
-from django.shortcuts import render
-from django.views.generic import ListView, DetailView
-from .models import Product, Category
+from django.shortcuts import render, HttpResponseRedirect
+from django.views.generic import DetailView, ListView
+from .models import Product, Category, ProductRating
+from django.db.models import Avg
+from django.urls import reverse
 # Create your views here.
 
 
@@ -22,7 +24,9 @@ class ProductDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['average_rating'] = self.object.get_average_rating()
+        product = self.get_object()
+        average_rating = product.product_ratings.aggregate(average_rating=Avg('rating')).get('average_rating', 0)
+        context['average_rating'] = average_rating
         return context
 
     def post(self, request, *args, **kwargs):
@@ -30,12 +34,11 @@ class ProductDetailView(DetailView):
         rating_value = request.POST.get('rating')
 
         if rating_value:
-            rating = Rating.objects.create(
+            rating = ProductRating.objects.create(
                 product=product,
                 user=request.user,
-                value=rating_value
+                rating=rating_value
             )
-            # Redirect to the same product detail page after rating submission
-            return HttpResponseRedirect(reverse('products:product_detail', args=(product.id,)))
+            return HttpResponseRedirect(reverse('products:product_detail', args=(product.pk,)))
 
         return super().get(request, *args, **kwargs)

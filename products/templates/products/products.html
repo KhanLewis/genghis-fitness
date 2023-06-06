@@ -25,15 +25,15 @@
         {% for product in products %}
         <div class="col">
             <div class="card h-100">
-                <a href="{% url 'product_detail' product.pk %}">
+                <a href="{% url 'products:product_detail' product.pk %}">
                     <img src="{{ product.image.url }}" class="card-img-top" alt="Product Image">
                 </a>
                 <div class="card-body">
                     <h5 class="card-title">
-                        <a href="{% url 'product_detail' product.pk %}">{{ product.name|title }}</a>
+                        <a href="{% url 'products:product_detail' product.pk %}">{{ product.name|title }}</a>
                     </h5>
                     <p class="card-text">{{ product.description }}</p>
-                    <p class="card-price">£{{ product.price }}</p>
+                    <p class="card-price">£{{ product.price}}</p>
                     <form class="add-to-cart-form">
                         {% csrf_token %}
                         <input type="hidden" name="product_id" value="{{ product.id }}">
