@@ -34,10 +34,18 @@
                     </h5>
                     <p class="card-text">{{ product.description }}</p>
                     <p class="card-price">£{{ product.price }}</p>
-                    <form action="{% url 'cart:add_to_cart' product.id %}" method="post">
+                    <form class="add-to-cart-form">
                         {% csrf_token %}
-                        <button type="submit" class="btn btn-primary">Add to Cart</button>
+                        <input type="hidden" name="product_id" value="{{ product.id }}">
+                        <button type="button" class="btn btn-primary add-to-cart-button">Add to Cart</button>
                     </form>
+                    <div class="ratings">
+                        {% if product.average_rating %}
+                        <p class="average-rating">Average Rating: {{ product.average_rating }}</p>
+                        {% else %}
+                        <p class="no-rating">No ratings yet.</p>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
         </div>
@@ -55,9 +63,10 @@
 {% endif %}
 
 <script>
-    // Auto-dismiss the success message after 3 seconds
     setTimeout(function () {
         $(".alert").alert("close");
     }, 3000);
 </script>
+
+<script src="{% static 'js/cart.js' %}"></script>
 {% endblock %}

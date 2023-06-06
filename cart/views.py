@@ -3,6 +3,7 @@ from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Cart, CartItem, Product, Order
 from django.contrib import messages
+from django.http import JsonResponse
 
 
 class AddToCartView(LoginRequiredMixin, View):
@@ -15,16 +16,40 @@ class AddToCartView(LoginRequiredMixin, View):
         if not item_created:
             cart_item.quantity += 1
             cart_item.save()
+            message = 'Item quantity updated in the cart.'
+        else:
+            message = 'Item added to the cart.'
 
-        return redirect('cart:cart_detail')
+        cart_items = CartItem.objects.filter(cart=cart)
+
+        data = {
+            'message': message,
+            'cart_count': cart_items.count()
+        }
+
+        return JsonResponse(data)
 
 
-class RemoveFromCartView(LoginRequiredMixin, View):
+class RemoveFromCartView(View):
     def post(self, request, cart_item_id):
         cart_item = CartItem.objects.get(id=cart_item_id)
-        cart_item.delete()
+        remove_quantity = request.POST.get('remove_quantity')  # Check if remove_quantity parameter is present
+
+        if remove_quantity:
+            quantity = int(remove_quantity)
+            if cart_item.quantity <= quantity:
+                # If the quantity to be removed is greater than or equal to the current quantity, remove the item
+                cart_item.delete()
+            else:
+                # If the quantity to be removed is less than the current quantity, update the quantity
+                cart_item.quantity -= quantity
+                cart_item.save()
+        else:
+            # If remove_quantity parameter is not present, remove the entire item
+            cart_item.delete()
 
         return redirect('cart:cart_detail')
+
 
 
 class CartDetailView(LoginRequiredMixin, View):
