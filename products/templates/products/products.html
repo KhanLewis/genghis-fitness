@@ -40,11 +40,7 @@
                         <button type="button" class="btn btn-primary add-to-cart-button">Add to Cart</button>
                     </form>
                     <div class="ratings">
-                        {% if product.average_rating %}
-                        <p class="average-rating">Average Rating: {{ product.average_rating }}</p>
-                        {% else %}
-                        <p class="no-rating">No ratings yet.</p>
-                        {% endif %}
+                        <p class="average-rating">Average Rating: {{ product.average_rating|floatformat:1 }}/5</p>
                     </div>
                 </div>
             </div>

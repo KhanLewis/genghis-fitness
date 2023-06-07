@@ -12,21 +12,25 @@
             <h4>{{ product.name }}</h4>
             <p>{{ product.description }}</p>
             <p class="card-price">£{{ product.price }}</p>
-            <p>Average Rating: {{ average_rating }}</p>
-            <form method="post" action="{% url 'products:rate_product' product.pk %}">
-                {% csrf_token %}
-                <div class="form-group">
-                    <label for="rating">Rate this product:</label>
-                    <select class="form-control" id="rating" name="rating">
-                        <option value="1">1 star</option>
-                        <option value="2">2 stars</option>
-                        <option value="3">3 stars</option>
-                        <option value="4">4 stars</option>
-                        <option value="5">5 stars</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit Rating</button>
-            </form>
+            <p>Average Rating: {{ average_rating|floatformat:1 }}/5</p>
+            {% if user.is_authenticated %}
+                {% if not has_rated %}
+                    <form method="post" action="{% url 'products:rate_product' product.pk %}">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="rating">Rate this product:</label>
+                            <select class="form-control" id="rating" name="rating">
+                                <option value="1">1 star</option>
+                                <option value="2">2 stars</option>
+                                <option value="3">3 stars</option>
+                                <option value="4">4 stars</option>
+                                <option value="5">5 stars</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Rating</button>
+                    </form>
+                {% endif %}
+            {% endif %}
         </div>
     </div>
 </div>

@@ -3,8 +3,8 @@ from django.views.generic import DetailView, ListView
 from .models import Product, Category, ProductRating
 from django.db.models import Avg
 from django.urls import reverse
-# Create your views here.
-
+from django.db import IntegrityError
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 class ProductListView(ListView):
     model = Product
@@ -30,15 +30,21 @@ class ProductDetailView(DetailView):
         return context
 
     def post(self, request, *args, **kwargs):
-        product = self.get_object()
-        rating_value = request.POST.get('rating')
+        if request.user.is_authenticated:
+            product = self.get_object()
+            rating_value = request.POST.get('rating')
 
-        if rating_value:
-            rating = ProductRating.objects.create(
-                product=product,
-                user=request.user,
-                rating=rating_value
-            )
-            return HttpResponseRedirect(reverse('products:product_detail', args=(product.pk,)))
+            # Check if the user has already rated this product
+            existing_rating = ProductRating.objects.filter(product=product, user=request.user).first()
+            if existing_rating:
+                return HttpResponseRedirect(reverse('products:product_detail', args=(product.pk,)))
 
-        return super().get(request, *args, **kwargs)
+            if rating_value:
+                rating = ProductRating.objects.create(
+                    product=product,
+                    user=request.user,
+                    rating=rating_value
+                )
+                return HttpResponseRedirect(reverse('products:product_detail', args=(product.pk,)))
+
+        return super().post(request, *args, **kwargs)
