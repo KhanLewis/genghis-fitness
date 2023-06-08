@@ -2,6 +2,7 @@ from django.db import models
 from django.db.models import Avg
 from autoslug import AutoSlugField
 
+
 class Category(models.Model):
     class Meta:
         verbose_name_plural = 'Categories'

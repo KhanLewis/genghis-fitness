@@ -6,6 +6,7 @@ from django.urls import reverse
 from django.db import IntegrityError
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+
 class ProductListView(ListView):
     model = Product
     template_name = 'products/products.html'
@@ -34,7 +35,6 @@ class ProductDetailView(DetailView):
             product = self.get_object()
             rating_value = request.POST.get('rating')
 
-            # Check if the user has already rated this product
             existing_rating = ProductRating.objects.filter(product=product, user=request.user).first()
             if existing_rating:
                 return HttpResponseRedirect(reverse('products:product_detail', args=(product.pk,)))

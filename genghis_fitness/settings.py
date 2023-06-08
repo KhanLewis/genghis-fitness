@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-vt46)w6@$k)qv2q7ny7*%)@3y+linx%2dw37a_h*5dh8c&4xxj
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-khanlewis-genghisfitnes-1n7796raarm.ws-eu98.gitpod.io']
+ALLOWED_HOSTS = ['8000-khanlewis-genghisfitnes-1n7796raarm.ws-eu99.gitpod.io']
 
 
 # Application definition
@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'home',
     'products',
-    'cart',
+    'bag',
 ]
 
 MIDDLEWARE = [
@@ -74,6 +74,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'context.bag_processor.bag_contents',
             ],
         },
     },

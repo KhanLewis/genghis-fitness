@@ -7,6 +7,16 @@
 {% block content %}
 <div class="container">
     <h1 class="mt-4">Product Page</h1>
+    {% if messages %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {% for message in messages %}
+        {{ message }}
+        {% endfor %}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endif %}
     <div class="row">
         <div class="col-md-12">
             <div class="card mb-4">
@@ -33,15 +43,23 @@
                         <a href="{% url 'products:product_detail' product.pk %}">{{ product.name|title }}</a>
                     </h5>
                     <p class="card-text">{{ product.description }}</p>
-                    <p class="card-price">£{{ product.price}}</p>
-                    <form class="add-to-cart-form">
+                    <p class="card-price">£{{ product.price }}</p>
+                    <form class="add-to-cart-form" method="POST" action="{% url 'bag:add_to_bag' item_id=product.pk %}">
                         {% csrf_token %}
-                        <input type="hidden" name="product_id" value="{{ product.id }}">
-                        <button type="button" class="btn btn-primary add-to-cart-button">Add to Cart</button>
+                        <input type="hidden" name="product_id" value="{{ product.pk }}">
+                        <input type="hidden" name="quantity" value="1">
+                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                        {% if product.has_size %}
+                        <label for="product_size">Size:</label>
+                        <select name="product_size" id="product_size">
+                            {% for size in product.available_sizes %}
+                            <option value="{{ size }}">{{ size }}</option>
+                            {% endfor %}
+                        </select>
+                        {% endif %}
+                        <button type="submit" class="btn btn-primary">Add to Cart</button>
+                        <input type="hidden" id="redirect-url" value="{{ request.path }}">
                     </form>
-                    <div class="ratings">
-                        <p class="average-rating">Average Rating: {{ product.average_rating|floatformat:1 }}/5</p>
-                    </div>
                 </div>
             </div>
         </div>
@@ -49,20 +67,4 @@
     </div>
 </div>
 
-{% if message %}
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-    {{ message }}
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
-{% endif %}
-
-<script>
-    setTimeout(function () {
-        $(".alert").alert("close");
-    }, 3000);
-</script>
-
-<script src="{% static 'js/cart.js' %}"></script>
 {% endblock %}
