@@ -73,7 +73,7 @@ class AdjustBagView(View):
                 messages.success(request, f'Removed {product.name} from your bag')
 
         request.session['bag'] = bag
-        return redirect(reverse('view_bag'))
+        return redirect(reverse('bag:view_bag'))
 
 
 class RemoveFromBagView(View):

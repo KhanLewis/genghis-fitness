@@ -4,7 +4,6 @@ from .models import Product, Category, ProductRating
 from django.db.models import Avg
 from django.urls import reverse
 from django.db import IntegrityError
-from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class ProductListView(ListView):
@@ -28,6 +27,13 @@ class ProductDetailView(DetailView):
         product = self.get_object()
         average_rating = product.product_ratings.aggregate(average_rating=Avg('rating')).get('average_rating', 0)
         context['average_rating'] = average_rating
+        context['has_rated'] = False
+
+        if self.request.user.is_authenticated:
+            existing_rating = ProductRating.objects.filter(product=product, user=self.request.user).first()
+            if existing_rating:
+                context['has_rated'] = True
+
         return context
 
     def post(self, request, *args, **kwargs):
@@ -48,3 +54,4 @@ class ProductDetailView(DetailView):
                 return HttpResponseRedirect(reverse('products:product_detail', args=(product.pk,)))
 
         return super().post(request, *args, **kwargs)
+

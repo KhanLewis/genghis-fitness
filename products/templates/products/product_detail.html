@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block page-header %}
+{% block page_header %}
 {% endblock %}
 
 {% block content %}
@@ -31,10 +31,10 @@
                         </div>
                         <button type="submit" class="btn btn-primary">Submit Rating</button>
                     </form>
+                {% else %}
+                    <p>You have already rated this product.</p>
                 {% endif %}
             {% endif %}
-          
-            
         </div>
     </div>
 </div>
