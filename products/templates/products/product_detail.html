@@ -5,6 +5,16 @@
 {% endblock %}
 
 {% block content %}
+{% if messages %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {% for message in messages %}
+        {{ message }}
+        {% endfor %}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+{% endif %}
 <div class="container">
     <div class="row">
         <div class="col-md-4">
@@ -35,6 +45,24 @@
                     <p>You have already rated this product.</p>
                 {% endif %}
             {% endif %}
+            <form class="add-to-cart-form" method="POST" action="{% url 'bag:add_to_bag' item_id=product.pk %}">
+                {% csrf_token %}
+                <input type="hidden" name="product_id" value="{{ product.pk }}">
+                <input type="hidden" name="quantity" value="1">
+                <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                {% if product.has_sizes %}
+                    <label for="product_size">Size:</label>
+                    <select name="product_size" id="product_size" class="form-control">
+                        <option value="XS"> XS</option>
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                    </select>
+                {% endif %}
+                <button type="submit" class="btn btn-primary">Add to Bag</button>
+            </form>
+            <a href="{% url 'products:product_list' %}" class="btn btn-primary">Back to Products</a>
         </div>
     </div>
 </div>

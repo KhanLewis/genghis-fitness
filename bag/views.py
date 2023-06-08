@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.views import View
+from django.http import HttpResponse
 from django.contrib import messages
 from products.models import Product
-from django.http import HttpResponse
 
 
 class BagView(View):
@@ -23,26 +23,34 @@ class AddToBagView(View):
         bag = request.session.get('bag', {})
 
         if size:
-            if item_id in list(bag.keys()):
-                if size in bag[item_id]['items_by_size'].keys():
-                    bag[item_id]['items_by_size'][size] += quantity
-                    messages.success(request, f'Updated size {size.upper()} {product.name} quantity to {bag[item_id]["items_by_size"][size]}')
+            if item_id in bag:
+                if isinstance(bag.get(item_id), dict) and 'items_by_size' in bag[item_id]:
+                    if size in bag[item_id]['items_by_size']:
+                        bag[item_id]['items_by_size'][size] += quantity
+                        messages.success(request, f'Updated size {size.upper()} {product.name} quantity to {bag[item_id]["items_by_size"][size]}')
+                    else:
+                        bag[item_id]['items_by_size'][size] = quantity
+                        messages.success(request, f'Added size {size.upper()} {product.name} to your bag')
                 else:
-                    bag[item_id]['items_by_size'][size] = quantity
+                    bag[item_id] = {'items_by_size': {size: quantity}}
                     messages.success(request, f'Added size {size.upper()} {product.name} to your bag')
             else:
                 bag[item_id] = {'items_by_size': {size: quantity}}
                 messages.success(request, f'Added size {size.upper()} {product.name} to your bag')
         else:
-            if item_id in list(bag.keys()):
-                bag[item_id] += quantity
-                messages.success(request, f'Updated {product.name} quantity to {bag[item_id]}')
+            if item_id in bag:
+                if isinstance(bag[item_id], int):
+                    bag[item_id] += quantity
+                    messages.success(request, f'Updated {product.name} quantity to {bag[item_id]}')
+                else:
+                    messages.error(request, f'Error: Invalid bag item format')
             else:
                 bag[item_id] = quantity
                 messages.success(request, f'Added {product.name} to your bag')
 
         request.session['bag'] = bag
         return redirect(redirect_url)
+
 
 
 class AdjustBagView(View):

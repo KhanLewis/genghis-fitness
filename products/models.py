@@ -21,9 +21,7 @@ class Product(models.Model):
     image = models.ImageField(upload_to='products/')
     created_at = models.DateTimeField(auto_now_add=True)
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.name
+    has_sizes = models.BooleanField(default=False, null=True, blank=True)
 
 
 class ProductRating(models.Model):
