@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponseRedirect
+from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
 from django.views.generic import DetailView, ListView
 from .models import Product, Category, ProductRating
 from django.db.models import Avg
@@ -10,10 +10,29 @@ class ProductListView(ListView):
     template_name = 'products/products.html'
     context_object_name = 'products'
 
+    def get_queryset(self):
+        category_slug = self.kwargs.get('slug')
+        if category_slug:
+            category = get_object_or_404(Category, slug=category_slug)
+            queryset = Product.objects.filter(category=category)
+        else:
+            queryset = super().get_queryset()
+        return queryset
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['categories'] = Category.objects.all()
         return context
+
+
+def category_view(request, slug):
+    category = get_object_or_404(Category, slug=slug)
+    products = Product.objects.filter(category=category)
+    context = {
+        'category': category,
+        'products': products
+    }
+    return render(request, 'products/products.html', context)
 
 
 class ProductDetailView(DetailView):
