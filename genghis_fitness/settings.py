@@ -1,4 +1,6 @@
 import os
+if os.path.isfile('env.py'):
+    import env
 
 """
 Django settings for genghis_fitness project.
