@@ -1,0 +1,1 @@
+web: gunicorn genghis_fitness.wsgi.application
