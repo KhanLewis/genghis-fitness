@@ -21,7 +21,7 @@
     </div>
     {% endif %}
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-4">
             <div class="card mb-4">
                 <div class="card-body">
                     {% if category %}
@@ -30,45 +30,47 @@
                     <ul class="list-group">
                         {% for category in categories %}
                         <li class="list-group-item">
-                            <a href="{% url 'products:category_view' slug=category.slug %}">{{ category.name }}</a>
+                            <a href="{% url 'products:category_view' slug=category.slug %}" class="text-dark">{{ category.name }}</a>
                         </li>
                         {% endfor %}
                     </ul>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-        {% for product in products %}
-        <div class="col">
-            <div class="card h-100">
-                <a href="{% url 'products:product_detail' product.pk %}">
-                    <img src="{{ product.image.url }}" class="card-img-top" alt="Product Image">
-                </a>
-                <div class="card-body">
-                    <h5 class="card-title">
-                        <a href="{% url 'products:product_detail' product.pk %}">{{ product.name|title }}</a>
-                    </h5>
-                    <p class="card-text">{{ product.description }}</p>
-                    <p class="card-price">£{{ product.price }}</p>
-                    <form class="add-to-cart-form" method="POST" action="{% url 'bag:add_to_bag' item_id=product.pk %}">
-                        {% csrf_token %}
-                        <input type="hidden" name="product_id" value="{{ product.pk }}">
-                        <input type="hidden" name="quantity" value="1">
-                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
-                        {% if product.has_size %}
-                        <label for="product_size">Size:</label>
-                        <select name="product_size" id="product_size">
-                            {% for size in product.available_sizes %}
-                            <option value="{{ size }}">{{ size }}</option>
-                            {% endfor %}
-                        </select>
-                        {% endif %}
-                    </form>
+        <div class="col-md-8">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                {% for product in products %}
+                <div class="col">
+                    <div class="card h-100">
+                        <a href="{% url 'products:product_detail' product.pk %}">
+                            <img src="{{ product.image.url }}" class="card-img-top" alt="Product Image">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a href="{% url 'products:product_detail' product.pk %}" class="text-dark">{{ product.name|title }}</a>
+                            </h5>
+                            <p class="card-text">{{ product.description }}</p>
+                            <p class="card-price">£{{ product.price }}</p>
+                            <form class="add-to-cart-form" method="POST" action="{% url 'bag:add_to_bag' item_id=product.pk %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="product_id" value="{{ product.pk }}">
+                                <input type="hidden" name="quantity" value="1">
+                                <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                                {% if product.has_size %}
+                                <label for="product_size">Size:</label>
+                                <select name="product_size" id="product_size">
+                                    {% for size in product.available_sizes %}
+                                    <option value="{{ size }}">{{ size }}</option>
+                                    {% endfor %}
+                                </select>
+                                {% endif %}
+                            </form>
+                        </div>
+                    </div>
                 </div>
+                {% endfor %}
             </div>
         </div>
-        {% endfor %}
     </div>
 </div>
 

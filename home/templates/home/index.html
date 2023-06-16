@@ -1,45 +1,16 @@
 {% extends "base.html" %}
 {% load static %}
 
-
-{% block page-header %}
-{% endblock %}
-
-
 {% block content %}
-    <section class="jumbotron text-center">
-        <h1 class="display-4">Welcome to Genghis Fitness</h1>
-        <p class="lead">We provide the best fitness products for your workout needs.</p>
-        <a href="{% url 'products:product_list' %}" class="btn btn-primary">Shop Now</a>
-
+    <section class="jumbotron landing">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h1 class="display-4">Welcome to Genghis Fitness</h1>
+                    <p class="lead">We provide the best fitness products for your workout needs.</p>
+                    <a href="{% url 'products:product_list' %}" class="btn btn-dark btn-lg">Shop Now</a>
+                </div>
+            </div>
+        </div>
     </section>
-
-    <section class="container">
-        <h2 class="text-center mb-4">Featured Products</h2>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card mb-4">
-                    <img src="{{ MEDIA_URL }}oversized-shirt.webp" class="card-img-top" alt="Product 1">
-                    <div class="card-body">
-                        <h5 class="card-title">Product 1</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <a href="#" class="btn btn-primary">View Details</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card mb-4">
-                    <img src="#" class="card-img-top" alt="Product 2">
-                    <div class="card-body">
-                        <h5 class="card-title">Product 2</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <a href="#" class="btn btn-primary">View Details</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card mb-4">
-                    <img src="#" class="card-img-top" alt="Product 3">
-                    <div class="card-body">
-                        <h5 class="card-title">Product 3
 {% endblock %}
