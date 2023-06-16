@@ -60,13 +60,18 @@
                                 <div class="col-12 col-sm-6">
                                     <!-- Remove Button -->
                                     <a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}" data-product_id="{{ item.product.id }}" data-product_size="{{ item.size }}">Remove</a>
-                                </td>
-                                <!-- Quantity Adjustment -->
-                                <form class="update-form" method="POST" action="{% url 'bag:adjust_bag' item.item_id %}">
-                                    {% csrf_token %}
-                                    <input type="number" name="quantity" value="{{ item.quantity }}" min="1">
-                                    <button type="submit">Update</button>
-                                </form>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <!-- Quantity Adjustment -->
+                                    <form class="update-form" method="POST" action="{% url 'bag:adjust_bag' item.item_id %}">
+                                        {% csrf_token %}
+                                        <div class="input-group">
+                                            <input type="number" name="quantity" value="{{ item.quantity }}" min="1" class="form-control">
+                                            <div class="input-group-append">
+                                                <button type="submit" class="btn btn-primary">Update</button>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                             <div class="row">
@@ -80,6 +85,12 @@
                                 <i class="fas fa-arrow-up text-black mx-auto my-auto"></i>
                             </a>
                         </div>
+                        <div class="row">
+                            <div class="col text-right">
+                                <h4>Total: ${{ total }}</h4>
+                                <a href="{% url 'checkout' %}" class="btn btn-primary btn-dark">Checkout</a>
+                            </div>
+                        </div>
                     </div>
                     <div class="table-responsive rounded d-none d-md-block">
                         <table class="table table-sm table-borderless">
@@ -90,6 +101,7 @@
                                     <th scope="col">Price</th>
                                     <th scope="col">Size</th>
                                     <th scope="col">QTY</th>
+                                    <th scope="col"></th>
                                 </tr>
                             </thead>
                             {% for item in bag_items %}
@@ -101,7 +113,7 @@
                                         <h4>{{ item.product.name }}</h4>
                                     </td>
                                     <td class="py-3">
-                                        <p class="my-0">£{{ item.product.price }}</p>
+                                        <p class="my-0">$ {{ item.product.price }}</p>
                                     </td>
                                     <td>
                                         <p class="my-0">{% if item.product.has_sizes %}{{ item.size|upper }}{% else %}N/A{% endif %}</p>
@@ -109,8 +121,12 @@
                                     <td class="py-3">
                                         <form class="update-form" method="POST" action="{% url 'bag:adjust_bag' item.item_id %}">
                                             {% csrf_token %}
-                                            <input type="number" name="quantity" value="{{ item.quantity }}" min="1">
-                                            <button type="submit">Update</button>
+                                            <div class="input-group">
+                                                <input type="number" name="quantity" value="{{ item.quantity }}" min="1" class="form-control">
+                                                <div class="input-group-append">
+                                                    <button type="submit" class="btn btn-primary">Update</button>
+                                                </div>
+                                            </div>
                                         </form>
                                     </td>
                                     <td class="py-3">
@@ -120,11 +136,9 @@
                             {% endfor %}
                             <tr>
                                 <td colspan="5" class="pt-5 text-right">
-                                    <h4>Total: £{{ total }}</h4>
+                                    <h4>Total: ${{ total }}</h4>
                                 </td>
-                            </tr>
-                            <tr>
-                                <td colspan="5" class="text-right">
+                                <td class="text-right">
                                     <a href="{% url 'checkout' %}" class="btn btn-primary btn-dark">Checkout</a>
                                 </td>
                             </tr>

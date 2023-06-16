@@ -23,18 +23,18 @@
                 <hr>
             </div>
         </div>
-        {% if messages %}
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                {% for message in messages %}
-                {{ message }}
-                {% endfor %}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            {% endif %}
         <div class="row">
             <div class="col-12 col-lg-6 order-lg-last mb-5">
+                {% if messages %}
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {% for message in messages %}
+                            {{ message }}
+                        {% endfor %}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endif %}
                 <p class="text-muted">Order Summary ({{ product_count }})</p>
                 <div class="row">
                     <div class="col-7 offset-2">
@@ -138,6 +138,16 @@
 							</span>
 							<span>Your card will be charged <strong>${{ grand_total|floatformat:2 }}</strong></span>
 						</p>
+						{% if messages %}
+            				<div class="alert alert-success alert-dismissible fade show" role="alert">
+                				{% for message in messages %}
+                    				{{ message }}
+                				{% endfor %}
+                				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    				<span aria-hidden="true">&times;</span>
+                				</button>
+            				</div>
+        				{% endif %}
 					</div>
                 </form>
             </div>
