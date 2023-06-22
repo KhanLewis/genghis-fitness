@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
   <h1>Wishlist</h1>
@@ -15,36 +16,33 @@
   {% endif %}
 
   {% if wishlist %}
-    <table>
-      <thead>
-        <tr>
-          <th>Product</th>
-          <th>Size</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for item in wishlist.items.all %}
-          <tr>
-            <td>{{ item.product.name }}</td>
-            <td>{{ item.size }}</td>
-            <td>
-              <a class="remove-item text-danger float-right" id="remove_{{ item.id }}" data-product_id="{{ item.product.id }}" data-product_size="{{ item.size }}">Remove</a>
-            </td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+    <div class="row">
+      {% for item in wishlist.items.all %}
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="card mb-4">
+            <a href="{% url 'products:product_detail' item.product.pk %}">
+              <img src="{{ item.product.image.url }}" class="card-img-top" alt="Product Image">
+            </a>
+            <div class="card-body">
+              <h5 class="card-title">
+                <a href="{% url 'products:product_detail' item.product.pk %}" class="text-dark">{{ item.product.name|title }}</a>
+              </h5>
+              <p class="card-text">{{ item.product.description }}</p>
+              <p class="card-price">£{{ item.product.price }}</p>
+              <a href="#" class="remove-item text-danger" id="remove_{{ item.id }}" data-product_id="{{ item.product.id }}" data-product_size="{{ item.size }}">Remove</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
   {% else %}
     <p>Your wishlist is empty.</p>
   {% endif %}
-  
+
   <script>
     $('.remove-item').click(function(e) {
       var csrfToken = "{{ csrf_token }}";
       var itemId = $(this).attr('id').split('remove_')[1];
-      console.log("itemID:", itemId)
-      console.log($(this).attr('id'))
       var productId = $(this).data('product_id');
       var productSize = $(this).data('product_size');
       var url = `/wishlist/remove/${itemId}/`;
@@ -60,5 +58,5 @@
         });
     });
   </script>
-  
+
 {% endblock %}
