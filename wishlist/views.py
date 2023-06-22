@@ -41,13 +41,16 @@ class AddToWishlistView(View):
 class RemoveFromWishlistView(View):
     def post(self, request, item_id):
         """Remove an item from the user's wishlist"""
-        wishlist_item = get_object_or_404(WishlistItem, id=item_id, wishlist__user=request.user)
+        try:
+            wishlist_item = get_object_or_404(WishlistItem, id=item_id, wishlist__user=request.user)
 
-        # Get the product details before deleting the item
-        product_name = wishlist_item.product.name
-        product_size = wishlist_item.size
+            # Get the product details before deleting the item
+            product_name = wishlist_item.product.name
+            product_size = wishlist_item.size
+            wishlist_item.delete()
+            messages.success(request, f'Product "{product_name}" (Size: {product_size}) removed from your wishlist.')
 
-        wishlist_item.delete()
-        messages.success(request, f'Product "{product_name}" (Size: {product_size}) removed from your wishlist.')
-
-        return redirect(reverse('wishlist:wishlist'))
+            return HttpResponse(status=200)
+        except Exception as e:
+            messages.error(request, f'Error removing item: {e}')
+            return HttpResponse(status=500)

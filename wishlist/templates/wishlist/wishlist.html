@@ -29,7 +29,7 @@
             <td>{{ item.product.name }}</td>
             <td>{{ item.size }}</td>
             <td>
-              <button class="remove-item" id="remove_{{ item.id }}" data-item_id="{{ item.id }}" data-product_id="{{ item.product.id }}" data-product_size="{{ item.size }}">Remove</button>
+              <a class="remove-item text-danger float-right" id="remove_{{ item.id }}" data-product_id="{{ item.product.id }}" data-product_size="{{ item.size }}">Remove</a>
             </td>
           </tr>
         {% endfor %}
@@ -43,6 +43,8 @@
     $('.remove-item').click(function(e) {
       var csrfToken = "{{ csrf_token }}";
       var itemId = $(this).attr('id').split('remove_')[1];
+      console.log("itemID:", itemId)
+      console.log($(this).attr('id'))
       var productId = $(this).data('product_id');
       var productSize = $(this).data('product_size');
       var url = `/wishlist/remove/${itemId}/`;
