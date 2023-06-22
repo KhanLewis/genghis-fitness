@@ -2,42 +2,46 @@
 {% load static %}
 
 {% block content %}
-  <h1>Wishlist</h1>
+  <div class="container text-center">
+    <h1 class="mt-4">Wishlist</h1>
 
-  {% if messages %}
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-      {% for message in messages %}
-        {{ message }}
-      {% endfor %}
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-  {% endif %}
+    {% if messages %}
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {% for message in messages %}
+          {{ message }}
+        {% endfor %}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    {% endif %}
 
-  {% if wishlist %}
-    <div class="row">
-      {% for item in wishlist.items.all %}
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="card mb-4">
-            <a href="{% url 'products:product_detail' item.product.pk %}">
-              <img src="{{ item.product.image.url }}" class="card-img-top" alt="Product Image">
-            </a>
-            <div class="card-body">
-              <h5 class="card-title">
-                <a href="{% url 'products:product_detail' item.product.pk %}" class="text-dark">{{ item.product.name|title }}</a>
-              </h5>
-              <p class="card-text">{{ item.product.description }}</p>
-              <p class="card-price">£{{ item.product.price }}</p>
-              <a href="#" class="remove-item text-danger" id="remove_{{ item.id }}" data-product_id="{{ item.product.id }}" data-product_size="{{ item.size }}">Remove</a>
+    {% if wishlist.items.all %}
+      <div class="row justify-content-center">
+        {% for item in wishlist.items.all %}
+          <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="card mb-4">
+              <a href="{% url 'products:product_detail' item.product.pk %}">
+                <img src="{{ item.product.image.url }}" class="card-img-top" alt="Product Image">
+              </a>
+              <div class="card-body">
+                <h5 class="card-title">
+                  <a href="{% url 'products:product_detail' item.product.pk %}" class="text-dark">{{ item.product.name|title }}</a>
+                </h5>
+                <p class="card-text">{{ item.product.description }}</p>
+                <a href="#" class="remove-item text-danger" id="remove_{{ item.id }}" data-product_id="{{ item.product.id }}" data-product_size="{{ item.size }}">Remove</a>
+              </div>
             </div>
           </div>
-        </div>
-      {% endfor %}
-    </div>
-  {% else %}
-    <p>Your wishlist is empty.</p>
-  {% endif %}
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="my-4">
+        <p>There are no products in your wishlist.</p>
+        <a href="{% url 'products:product_list' %}" class="btn btn-primary">Add products to your wishlist</a>
+      </div>
+    {% endif %}
+  </div>
 
   <script>
     $('.remove-item').click(function(e) {
