@@ -44,24 +44,61 @@
                 {% else %}
                     <p>You have already rated this product.</p>
                 {% endif %}
+                <form class="add-to-cart-form" method="POST" action="{% url 'bag:add_to_bag' item_id=product.pk %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="product_id" value="{{ product.pk }}">
+                    <input type="hidden" name="quantity" value="1">
+                    <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                    {% if product.has_sizes %}
+                        <label for="product_size">Size:</label>
+                        <select name="product_size" id="product_size" class="form-control">
+                            <option value="XS">XS</option>
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
+                        </select>
+                    {% endif %}
+                    <button type="submit" class="btn btn-primary mt-3">Add to Bag</button>
+                </form>
+                <form class="add-to-wishlist-form" method="POST" action="{% url 'wishlist:add_to_wishlist' product_id=product.pk %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="product_id" value="{{ product.pk }}">
+                    <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                    {% if product.has_sizes %}
+                        <div class="form-group">
+                            <label for="product_size">Size:</label>
+                            <select name="size" id="product_size" class="form-control" required>
+                                <option value="XS">XS</option>
+                                <option value="S">S</option>
+                                <option value="M">M</option>
+                                <option value="L">L</option>
+                                <option value="XL">XL</option>
+                            </select>
+                        </div>
+                    {% endif %}
+                    <button type="submit" class="btn btn-primary mt-3">Add to Wishlist</button>
+                </form>
+            {% else %}
+                <form class="add-to-cart-form" method="POST" action="{% url 'bag:add_to_bag' item_id=product.pk %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="product_id" value="{{ product.pk }}">
+                    <input type="hidden" name="quantity" value="1">
+                    <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                    {% if product.has_sizes %}
+                        <label for="product_size">Size:</label>
+                        <select name="product_size" id="product_size" class="form-control">
+                            <option value="XS">XS</option>
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
+                        </select>
+                    {% endif %}
+                    <p>Please <a href="{% url 'account_login' %}">login</a> to add this item to your wishlist.</p>
+                    <button type="submit" class="btn btn-primary mt-3">Add to Bag</button>
+                </form>
             {% endif %}
-            <form class="add-to-cart-form" method="POST" action="{% url 'bag:add_to_bag' item_id=product.pk %}">
-                {% csrf_token %}
-                <input type="hidden" name="product_id" value="{{ product.pk }}">
-                <input type="hidden" name="quantity" value="1">
-                <input type="hidden" name="redirect_url" value="{{ request.path }}">
-                {% if product.has_sizes %}
-                    <label for="product_size">Size:</label>
-                    <select name="product_size" id="product_size" class="form-control">
-                        <option value="XS"> XS</option>
-                        <option value="S">S</option>
-                        <option value="M">M</option>
-                        <option value="L">L</option>
-                        <option value="XL">XL</option>
-                    </select>
-                {% endif %}
-                <button type="submit" class="btn btn-primary mt-3">Add to Bag</button>
-            </form>
             <div class="mt-3">
                 <a href="{% url 'products:product_list' %}" class="btn btn-primary">Back to Products</a>
             </div>

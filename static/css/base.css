@@ -114,3 +114,13 @@ body, html {
     font-size: 14px;
   }
 }
+
+/* wishlist */
+.wishlist-product-name {
+  font-size: 20px;
+  margin-left: 10px;
+}
+
+.wishlist-product-image {
+  max-width: 150px;
+}

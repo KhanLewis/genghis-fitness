@@ -1,1 +1,1 @@
-welcome to my  app
+welcome to Genghis fitness 

@@ -52,7 +52,6 @@ class AddToBagView(View):
         return redirect(redirect_url)
 
 
-
 class AdjustBagView(View):
     def post(self, request, item_id):
         """Adjust the quantity of the specified product to the specified amount"""

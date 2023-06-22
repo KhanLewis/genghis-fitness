@@ -28,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['genghis-fitness-0467655b3c90.herokuapp.com', '8000-khanlewis-genghisfitnes-1n7796raarm.ws-eu100.gitpod.io']
 
@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'products',
     'bag',
     'checkout',
+    'wishlist',
 
     #other
     'crispy_forms',
