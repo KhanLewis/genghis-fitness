@@ -57,6 +57,10 @@ body, html {
   right: 10px;
 }
 
+.remove-item {
+  cursor: pointer;
+}
+
 /* Contact Page */
 #mc_embed_signup {
   display: flex;
@@ -108,4 +112,4 @@ body, html {
   #mc_embed_signup h2 {
     font-size: 24px;
   }
-}0
+}
