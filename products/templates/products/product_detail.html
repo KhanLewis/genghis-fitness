@@ -27,7 +27,7 @@
             <p>Average Rating: {{ average_rating|floatformat:1 }}/5</p>
             {% if user.is_authenticated %}
                 {% if not has_rated %}
-                    <form method="post" action="{% url 'products:rate_product' product.pk %}">
+                <form method="post" action="{% url 'products:product_detail' product.pk %}">
                         {% csrf_token %}
                         <div class="form-group">
                             <label for="rating">Rate this product:</label>

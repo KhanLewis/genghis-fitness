@@ -62,15 +62,16 @@ body, html {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 80vh;
+  height: 100vh;
   background: #fff;
   font: 14px Helvetica, Arial, sans-serif;
-  width: 600px;
-  margin: 0 auto;
+  padding: 20px;
+  overflow-x: hidden; /* Added to prevent horizontal scrolling */
 }
 
 #mc_embed_signup form {
-  width: 300px;
+  width: 100%;
+  max-width: 400px;
 }
 
 #mc_embed_signup h2 {
@@ -103,15 +104,8 @@ body, html {
 }
 
 /* Media Queries */
-@media (max-width: 768px) {
-  .landing .container h1 {
+@media (max-width: 576px) {
+  #mc_embed_signup h2 {
     font-size: 24px;
   }
-  .landing .container p {
-    font-size: 16px;
-  }
-  .landing .container .btn {
-    font-size: 14px;
-  }
-}
-
+}0
