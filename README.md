@@ -117,62 +117,89 @@ No issues found, using PEP8
 # Test cases:
 ## Home Page 
  * Step 1: The user will see the landing page, the tittle of the page at the top left next to navigation links.
- * Step 2: The user will see a full width image with the name The Resturant and statement mordern cuisine.
- * Step 3: The user will notice a paragraph and another full width image
- * Step 4: the user will see a another pararaph and the footer underneath
- * Step 5: the user will see small ammount of text asking to login or sign up (if user is not signed in), if the user is signed ini they will see text asking them to make a booking
+ * Step 2: The User will see the landing page image with shopnow button in the middle of that image. 
+ 
 
-## Booking Page
-  * Step 1: The user will click on the navigation bar link "booking" 
-  * Step 2: the user will be greeted with a form displaying the fields name,email,phone,people,special requirements,date,time.
-  * Step 3: The user will be notified if their booking was successful then redirected to thier 'My bookings' page.
-  <img src="media/readme/booking.png" width="100%" height="100%">
+## Products Page
+  * Step 1: The user will click on the navigation bar link "Products" or the "Shop Now" button on the landing page. 
+  * Step 2: The user will see a list of categories and products to the right of the categories and the heading of products.
+  * Step 3: The user will click on the cateogires or select a product.
+  * Step 4: If the user clicked on categories they will see all products related to that category on the category page.
+  * Step 5: If the user clicked on a product they will be taken to the detail page where users will see the description, price, rating, options to rate or add to wish list if the user is signed in. Add to bag button, and lastly a back to products button that will return to their previous page. 
+  * Step 6: if the user adds the product to the bag or wishlist they will see a message with the size and name of the product added to the chosen one. 
+  * Step 7: If the user adds a rating to the product then the rating will be increased or decreased and the user will no longer be able to rate the product.
+   ![product page](media/readme/products_page.png)
+   ![product detail page](media/readme/product_detail2.png)
 
-## Menu page
-* The user will click the menu page on the navigation bar.
-* The user will see a heading and a paragraph explaining  about the food,
-* The user will notice a cocktail menu with prices, description alongside a variety of choices
-* The user will see starters along side prices, descriptions and choices 
-* the user will see a mains section with prices, descriptions and choice of dishes
-* The user will see our tuesday only deal with description and prices
+## Category page
+  * Step 1: The user will see the category they are in on the left of the page underneath the heading.
+  * Step 2: The user will see the products related to that category on the right of the category name.
+  ![Category Page](media/readme/category_page.png)
 
-## sign up page
-* The user will click on the sign up nav bar button
-* The user will see the heading and a message underneath
-* The user will see a form with the fields username, email, password, password again, signup button
-* The user will see a confirmation message after they signed up and then be redirected to the homepage
-<img src="media/readme/sign_up.png" width="100%" height="100%">
+
+## Shopping bag page
+* Step 1: The user will click on nav bar link "bag"
+* Step 2: The user will see the heading "shopping bag" and a little bit of text saying your bag is empty with a button that says keep shopping
+* Step 3: The user will see the message saying that the item has been added to their bag.
+* Step 4: If the user has items in their bag then the user will see text saying "product info" and underneath the image of the "item","name","price","size", "quantity" an "update" button to change the quantity, a "remove" button, "checkout" button and the "total" of the bag.
+* Step 5: The user will click on the checkout button and be redirected to the checkout page.
+
+## checkout page
+* Step 1: The user will be greeted withe heading of "checkout"
+* Step 2: The user will be greeted with a large form with the fields: full name, email, phone number, street address 1, street address 2, town or city, county, postal code, country. at the bottom of this form is a card number section where the user will be able to add their card details.
+* Step 3: The user will notice that the products they have bought are at the right of this form. which also displayed the name quantity and price of the products.
+* step 4: The user will notice the grand total of the products.
+* Step 5: The user will notice two buttons at the bottom of the page "adjust bag", "Complete order".
+* Step 6: If the user clicks on adjust bag they will be redirected to the shopping bag page.
+* Step 7: If the user clicks on the checkout page they will be taken to the checkout success page.
+
+## Checkout Success page
+* step 1 : the user will see a  message saying thankyou and that the order is complete and that they will receive a email.
+* step 2: The user will see two new fields, order number and order date.
+* Step 3: The user will see a list of field from the previous form showing the user the detail they entered including the item they bought.
+
+## newletter page
+* Step 1: The user will click newsletter navbar link.
+* Step 2: The user will be greeted with a form.
+* Step 3:The user will notice a message saying "Subscribe For Weekly updates and exclusive promo codes!" 
+* Step 4:The user will see the fields, first name, last name, email address.
+* Step 5: The user will then see a message saying "Thank you for subscribing!"
+
+## Wishlist
+* Step 1: The user will click on the nav bar button "wishlist".
+* Step 2:The user will see a heading "wishlist" and a message saying "There are no products in your wishlist."
+* Step 3: The user will see a button saying "Add products to your wishlist" this button will redirect the user back to the products page where they can add items to their wishlist.
+* Step 4: The user will notice the items in their wishlist displayed under the heading.
+* step 5: The user can remove the item by clicking on the remove button on the item.
+
 
 ## login page 
-* The user will click on the login button on the nav bar
-* The user will see a form with the fields username, password
-* The user will click sign in and will be redirected to home page
+* Step 1: The user will click on the login button on the nav bar
+* Step 2: The user will see a form with the fields username, password
+* Step 3: The user will click sign in and will be redirected to home page
 <img src="media/readme/login.png" width="100%" height="100%">
 
-## my bookings page
-* the user will click on the my account dropdown
-* the user will click my booking button
-* the user will see their bookings
-* the user will be able to edit and delete their bookings using the edit and delete buttons
-<img src="media/readme/my_booking.png" width="100%" height="100%">
 
-## signout page
-* the user will press on the my account dropdown
-* the user will click the signout button
-* the user will be redirected to the sign out page 
-* the user will see a message saying they successfully signed out
+## Signout page
+* Step 1: The user will click on the signout button on the navbar.
+* Step 2: The user will see two bits of text saying "Sign Out" for the header and  "Are you sure you want to sign out?" as an informative message below.
+* Step 3: The user can click on the sign out button, which will redirect them back to the homepage.
 <img src="media/readme/sign_out.png" width="100%" height="100%">
 
 
 # Bugs
 I encounted these bugs:
-* user wasnt able to view bookings on their my bookings page
-* user couldnt edit booking wouldnt load there previous bookings 
-* user would get 404 on delete of booking 
-* user couldnt enter a phone number 
+* submitting a rating would redirect you to a blank page
+* payments on stripe wasnt successful
+* Side scrolling on newletter page
+* ratings wasnt being added up correctly
+* Users wouldnt see a success messasge when adding products to wishlist
+* when removing a item form the bag it wouldnt remove all items
+* when trying to remove a certain size of a item it would remove all of the same items.
+* cateogory links wouldnt show the items associated with those categories.
 
 ## **Light house**
-<img src="media/readme/lighthouse.png" width="100%" height="100%">
+ ![Lighthouse](media/readme/lighthouse.png)
 
  # **Supported Screen Sizes:**
   I have tested these device sizes using googles developer tools.
@@ -188,8 +215,7 @@ I encounted these bugs:
   * Create a new app 
   * Within the new app click on the settings tab
   * Open the reveal config vars section
-   * enter in your required config vars:
-   <img src="media/readme/config.png" width="100%" height="100%">
+   * enter in your required config vars for example the keys to your respository and database
   * Enter in you variables 
   * Navigate to the deploy tab
   * Click on github and enter in the name of your repository 
@@ -201,11 +227,13 @@ I encounted these bugs:
   ## GITPOD:
  * This site was also viewed through a browser using Gitpod, This is how I achieved this :
    * Open your repository through Github.
-   * At the top of yout repository click on the gitpod button.
+   * At the top of your repository click on the gitpod button.
    * When it had loaded adn you can view your code, within the terminal type "python3 manage.py runserver"
    * Wait for the pop up in the bottom right hand corner of Gitpod.
    * Select the _open browser_ option and it will redirect you to your webpage.
 
 # Acknowledgements and Credits
-* code institute 
+* Code institute 
 * django docs
+* Youtube
+* Stack overflow
