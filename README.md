@@ -11,7 +11,7 @@ Welcome to Genghis Fitness, your ultimate destination for all your fitness needs
 #### See Genghis fitness project in repository
 
 ### Using Agile
-<img src="media/readme/User_story_agile.png" width="100%" height="100%"> -- later
+![Using Agile](media/readme/user_story_agile.png)
 
 
 ## **Features** 
