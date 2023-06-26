@@ -13,6 +13,33 @@ Welcome to Genghis Fitness, your ultimate destination for all your fitness needs
 ### Using Agile
 ![Using Agile](media/readme/user_story_agile.png)
 
+## Facebook business page:
+![Using Agile](media/readme/facebook_page.png)
+
+## Marketing and Business Model
+
+### Social Media Marketing:
+* Social media marketing has become the preferred choice for promoting the Genghis Fitness brand due to its extensive reach, precise targeting capabilities, enhanced brand visibility,  
+  cost-effectiveness, engagement opportunities, and data-driven insights. By strategically utilizing these platforms, you can establish a strong online presence, engage with your audience, drive brand awareness, and ultimately increase the growth and success of Genghis Fitness in the highly competitive online fitness industry.
+### Business model:
+* Introduction:
+  * By leveraging advanced technology and offering innovative fitness apparel, Genghis Fitness stands out as a trailblazing brand. We will explore the key elements of Genghis Fitness' business model and how it has redefined the online fitness industry.
+
+* Online Accessibility: Genghis Fitness has established a robust online platform that breaks down geographical barriers, providing fitness enthusiasts worldwide with easy access to our products and services.
+
+* Innovative Fitness Apparel: At the heart of Genghis Fitness' is our cutting-edge fitness apparel line. We incorporate state-of-the-art fabric technologies, ergonomic designs, and stylish aesthetics to create a unique fusion of fitness and fashion. These innovative garments enhance performance, comfort, and style, empowering individuals to look and feel their best during workouts.
+
+* Community Support: Genghis Fitness recognizes the importance of building a supportive community. We foster an online environment that connects fitness enthusiasts, encouraging them to share their experiences, challenges, and successes. This sense of community creates a motivating and inspiring space for individuals to connect, support, and uplift each other in their fitness journeys.
+
+* Technological Advancements: While Genghis Fitness focuses primarily on innovative fitness apparel, We also incorporate technological advancements to enhance the customer experience. From seamless online shopping experiences to secure payment systems and fast delivery, we leverage technology to streamline the entire customer journey.
+
+* Continuous Adaptation: Genghis Fitness stays ahead of the curve by continuously adapting to the evolving needs and preferences of their customers. We invest in research and development, keeping abreast of the latest trends in fitness and fashion, and incorporating customer feedback into their product designs and offerings.
+
+* Conclusion:
+ * Genghis Fitness has revolutionized the online fitness industry by seamlessly blending fitness and fashion. Their business model, characterized by online accessibility, innovative fitness apparel, community support, technological advancements, and continuous adaptation, has propelled them to the forefront of the industry. By empowering individuals to express their style while pursuing their fitness goals, Genghis Fitness has redefined the way people approach online fitness and fashion. 
+
+
+
 
 ## **Features** 
 ####  **Navigation Bar:**
