@@ -16,7 +16,7 @@ Welcome to Genghis Fitness, your ultimate destination for all your fitness needs
 
 ## **Features** 
 ####  **Navigation Bar:**
-* This has all the elements to be able to navigate across the website. This includes  a _**Home**_ button, _**products**_ button, _**bag**_ button,_**contact**_ button,_**wishlist**_ button and some account buttons like _**login**_. If you are not logged in, aswell as _**signup**_  button. If you are logged in then you will see a _**signout**_ button. These features are so that the user is able to navigate across the website seamlessly, so user can have access to each part of the site without having to travel accross pages to to get to their disired result. This features are so that users are able to login or signup.
+* This has all the elements to be able to navigate across the website. This includes  a _**Home**_ button, _**products**_ button, _**bag**_ button,_**newsletter**_ button,_**wishlist**_ button and some account buttons like _**login**_. If you are not logged in, aswell as _**signup**_  button. If you are logged in then you will see a _**signout**_ button. These features are so that the user is able to navigate across the website seamlessly, so user can have access to each part of the site without having to travel accross pages to to get to their disired result. This features are so that users are able to login or signup.
 <img src="media/readme/navbar.png" width="100%" height="100%">
 
 #### **landing page:**
@@ -42,18 +42,27 @@ Welcome to Genghis Fitness, your ultimate destination for all your fitness needs
   * ![Shopping bag page 1 ](media/readme/shopping_bag1.png)
     * ![Shopping bag page 2 ](media/readme/shopping_bag2.png)
 
- #### **Checkout Page**
- * The my bookings page will display all of the currently signed in users bookings that they have made from completing the booking form
-  <img src="media/readme/my_booking.png" width="100%" height="100%">
+#### **Checkout Page**
+ * On this page the user can fill in their details to place and order, once compelete they will be redirected to the checkout success page. 
+  * ![Checkout page](media/readme/checkout_page.png)
 
+#### **Checkout Success Page**
+ * This where the user will see their order and confirming that everything was successful
+  * ![Checkout Success page](media/readme/checkout_success_page.png)
 
- #### **Sign-out Page**
- * The sign out page will allow users to sign out of their account.
-   <img src="media/readme/sign_out.png" width="100%" height="100%">
+#### **Newsletter**
+ * This is where users can sign up to a news letter to receive weekly updates about new products and upcoming events.
+   ![News letter](media/readme/mailchimp.png)
 
- #### **login Page**
- * The login page will allow users who have created an account to sign in to view their bookings or make another one.
-   <img src="media/readme/login.png" width="100%" height="100%">
+#### **Custom 404 Page**
+ * This is the page the user will see if they click on a page that doesnt exist.
+* ![404 Page](media/readme/404_page.png)
+
+#### **Wishlist **
+* The wishlist page is where users can store items in their wishlist for a later date.
+  * ![wishlist 1](media/readme/Wishlist1.png)
+    * ![wishlist 2](media/readme/Wishlist2.png)
+   
 
 ## **Future features**:
 * To allow users to rate dishes and request different ones
