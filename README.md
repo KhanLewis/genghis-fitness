@@ -20,27 +20,29 @@ Welcome to Genghis Fitness, your ultimate destination for all your fitness needs
 <img src="media/readme/navbar.png" width="100%" height="100%">
 
 #### **landing page:**
- * The landing page describes a about the restaurant while displaying images of the restaurant
+ * The lading page is simple and easy to navigate it only shows a large image and _**Shop-now**_  button below the navbar 
  <img src="media/readme/landing_page.png" width="100%" height="100%">
 
-#### **Footer:**
- * The footer has a couple of features that include links to sign up or login in if the user is not logged im, if the user is logged in it will show links to the bookings page.
-  <img src="media/readme/footer.png" width="100%" height="100%">
-   <img src="media/readme/footer_1.png" width="100%" height="100%">
+#### **Products Page:**
+ * The products page is a simple easy to navigate page that displays the products that are sold at genghis fitness to the left of the products are the categories which are clickable and will take you to the products specified by the name of the category. To the right of the categories is where all products will be sold.
+![Products Page](media/readme/products_page.png)
 
- #### **Booking Page:**
- * The booking page is for users that have created an account or logged in , to fill out a form that allows them to enter their name, email ,phone, special requirements, date, time, so they are able to book at our restaurant  
- <img src="media/readme/booking.png" width="100%" height="100%">
+#### **Product Detail Page:**
+ * The product detail page allow users to buy, add to wishlist and rate the products if the user is signed in.
+![Products Detail Page 1](media/readme/product_detail1.png)
+## If Signed In
+![Products Detail Page 2](media/readme/product_detail2.png)
  
- #### **Menu:** 
- * The menu page is to display the lists of food we sell at our restaurant, it gives a insight into the pricing and selection of beverages, meals and deserts available.
-  <img src="media/readme/menu.png" width="100%" height="100%">
+ #### **Category Page :** 
+ * This is a simple page that shows all the products in the chosen category.
+  * ![Category Page](media/readme/category_page.png)
 
- #### **Sign-up Page**
- * The sign up page will allow users to create an account by completing a form that is displayed on the page.
- <img src="media/readme/sign_up.png" width="100%" height="100%">
+#### **Shopping bag page**
+ * This page is where users can view all the items they have added to their bag and where they can navigate to the checkout page. Users have the abillity to remove items from their bag or increase the quantity on this page. 
+  * ![Shopping bag page 1 ](media/readme/shopping_bag1.png)
+    * ![Shopping bag page 2 ](media/readme/shopping_bag2.png)
 
- #### **My bookings Page**
+ #### **Checkout Page**
  * The my bookings page will display all of the currently signed in users bookings that they have made from completing the booking form
   <img src="media/readme/my_booking.png" width="100%" height="100%">
 
