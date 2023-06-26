@@ -54,30 +54,45 @@ Welcome to Genghis Fitness, your ultimate destination for all your fitness needs
  * This is where users can sign up to a news letter to receive weekly updates about new products and upcoming events.
    ![News letter](media/readme/mailchimp.png)
 
-#### **Custom 404 Page**
- * This is the page the user will see if they click on a page that doesnt exist.
-* ![404 Page](media/readme/404_page.png)
-
 #### **Wishlist **
 * The wishlist page is where users can store items in their wishlist for a later date.
   * ![wishlist 1](media/readme/Wishlist1.png)
     * ![wishlist 2](media/readme/Wishlist2.png)
+
+#### **Sign in page**
+* Users are able to sign in their prevously created account user this form on the sign in page.
+  * ![Sign in](media/readme/sign_in.png)
+
+#### **Sign out page**
+* Users can use this page to sign out of their account.
+  * ![Sign out](media/readme/sign_out.png)
+
+#### **Sign up page**
+* Users can use this page to create a account that will sedn them a email for confirmation.
+  * ![Sign up](media/readme/sign_up.png)
+
+#### **Custom 404 Page**
+ * This is the page the user will see if they click on a page that doesnt exist.
+* ![404 Page](media/readme/404_page.png)
    
 
 ## **Future features**:
-* To allow users to rate dishes and request different ones
-* Allow users to have a loyalty feature based on bookings
+* To have active accounts that will store all the information for recurring users, so users can click on their account and retreive all this information.
+* To have Users be able to comment on the clothing to allow the store owner and users have usefull first hand information about the products other customers have bought.
+* To have a feature where adding items to your wishlist could enter you in to a raffle, where one user a month will win a free item from their wishlist. 
+* To be able to allow users to chat to staff throught a chat bubble upon visiting th page so they can ask any question they would like to know about the products.
+
 
 # CRUD functionality
-## As seen in the my bookings page image
-### Add a Booking
-* Create or 'add' Booking by filling out the Form on the booking page.
+## Imgaes displayed above in previous content.
+### Add a Product
+* Users can add items to their shopping bag and wishlist with the "add to bag" button and "add to wishlist" button on the product detail page.
 
-### Update a Booking
-* Update or 'edit'a booking by clicking on the edit button found within the my bookings page.
+### Update a product
+* Users can update their shopping bag with the update button on the shopping bag page.
 
-### Delete a Booking
-* Delete or 'remove' a booking by clicking on the Delete button found within the my bookings page.
+### Remove a product
+* Users can remove/ delete items from their wishlist or from their shopping bag these button can be found on both pages.
 
  ## **Technologies Used:**
 
@@ -91,10 +106,10 @@ Welcome to Genghis Fitness, your ultimate destination for all your fitness needs
 # **Testing:** 
 
 ## **HTML Vaildator** 
-NO errors or bugs found within the code. Validated on Official W3C Validator - [CLICK HERE](https://validator.w3.org/nu/?doc=https%3A%2F%2Fthe-restaurant.herokuapp.com%2F)   
+NO errors or bugs found within the code. Validated on Official W3C Validator - [CLICK HERE](https://validator.w3.org/nu/?doc=https%3A%2F%2Fgenghis-fitness-0467655b3c90.herokuapp.com%2F)   
 
 ## **CSS Validator**
-NO errors found within CSS code (only errors regarding bootstrap). Validated by  Official Jigsaw - [CLICK HERE](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fthe-restaurant.herokuapp.com%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
+NO errors found within CSS code. Validated by Official Jigsaw - [CLICK HERE](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fgenghis-fitness-0467655b3c90.herokuapp.com%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
 
 ## **Python validator**
 No issues found, using PEP8
