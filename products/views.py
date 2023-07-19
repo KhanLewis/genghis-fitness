@@ -1,8 +1,10 @@
-from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
+from django.shortcuts import render, HttpResponseRedirect, get_object_or_404, redirect
 from django.views.generic import DetailView, ListView
-from .models import Product, Category, ProductRating
+from django.contrib.auth.decorators import login_required
+from .models import Product, Category, ProductRating, Comment
 from django.db.models import Avg
 from django.urls import reverse
+from .forms import CommentForm
 
 
 class ProductListView(ListView):
@@ -72,3 +74,48 @@ class ProductDetailView(DetailView):
                 return HttpResponseRedirect(reverse('products:product_detail', args=(product.pk,)))
 
         return super().post(request, *args, **kwargs)
+
+
+@login_required
+def add_comment(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.product = product
+            comment.user = request.user
+            comment.save()
+            return redirect('products:product_detail', pk=product_id)
+    else:
+        form = CommentForm()
+
+    return render(request, 'add_comment.html', {'product': product, 'form': form})
+
+
+@login_required
+def edit_comment(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id, user=request.user)
+
+    if request.method == 'POST':
+        form = CommentForm(request.POST, instance=comment)
+        if form.is_valid():
+            form.save()
+            return redirect('products:product_detail', pk=comment.product.pk)
+    else:
+        form = CommentForm(instance=comment)
+
+    return render(request, 'edit_comment.html', {'comment': comment, 'form': form})
+
+
+@login_required
+def delete_comment(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id, user=request.user)
+
+    if request.method == 'POST':
+        product_id = comment.product.id
+        comment.delete()
+        return redirect('products:product_detail', pk=product_id)
+
+    return render(request, 'delete_comment.html', {'comment': comment})

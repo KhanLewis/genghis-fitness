@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models import Avg
+from django.contrib.auth.models import User
 from autoslug import AutoSlugField
 
 
@@ -35,3 +36,11 @@ class ProductRating(models.Model):
 
     def get_average_rating(self):
         return self.product.product_ratings.aggregate(average_rating=Avg('rating')).get('average_rating', 0)
+
+
+class Comment(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='comments')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
