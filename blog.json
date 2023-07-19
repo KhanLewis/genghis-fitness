@@ -1,0 +1,1 @@
+[{"model": "blog.blog", "pk": 1, "fields": {"title": "new blog", "content": "This is my new blog", "created_at": "2023-07-19T11:22:59.995Z", "author": 2}}, {"model": "blog.blog", "pk": 2, "fields": {"title": "another blog post", "content": "welcome to Genghis fitness we hope all is well!", "created_at": "2023-07-19T11:25:38.639Z", "author": 2}}]
