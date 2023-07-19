@@ -29,7 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'my_secret_key'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['genghis-fitness-0467655b3c90.herokuapp.com', '8000-khanlewis-genghisfitnes-ccg4r300os6.ws-eu101.gitpod.io']
 
@@ -137,18 +137,6 @@ else:
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
-
-
-# DATABASES = {
-#         'default': {
-#             'ENGINE': 'django.db.backends.sqlite3',
-#             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#         }
-#     }
-
-# DATABASES = {
-# 'default': dj_database_url.parse('postgres://coeskctq:vj-mI4ejAcNySiXfZ0Yq77dQZpPa090m@surus.db.elephantsql.com/coeskctq')
-# }
 
 
 # Password validation
