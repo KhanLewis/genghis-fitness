@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="mt-4"> Whats happening at GF! </h1>
+        <ul class="list-group mt-4">
+            {% for blog in blogs reversed %}
+            <li class="list-group-item">
+                <h3>{{ blog.title }}</h3>
+                <p><strong>Posted on:</strong> {{ blog.created_at }}</p>
+                <p>{{ blog.content }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
