@@ -139,6 +139,18 @@ else:
     }
 
 
+# DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.sqlite3',
+#             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#         }
+#     }
+
+# DATABASES = {
+# 'default': dj_database_url.parse('postgres://coeskctq:vj-mI4ejAcNySiXfZ0Yq77dQZpPa090m@surus.db.elephantsql.com/coeskctq')
+# }
+
+
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
