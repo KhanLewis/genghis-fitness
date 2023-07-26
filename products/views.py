@@ -1,4 +1,8 @@
-from django.shortcuts import render, HttpResponseRedirect, get_object_or_404, redirect
+from django.shortcuts import (
+    render,
+    HttpResponseRedirect,
+    get_object_or_404,
+    redirect)
 from django.views.generic import DetailView, ListView
 from django.contrib.auth.decorators import login_required
 from .models import Product, Category, ProductRating, Comment
@@ -45,12 +49,16 @@ class ProductDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         product = self.get_object()
-        average_rating = product.product_ratings.aggregate(average_rating=Avg('rating')).get('average_rating')
-        context['average_rating'] = round(average_rating, 1) if average_rating is not None else 0
+        average_rating = product.product_ratings.aggregate(
+            average_rating=Avg('rating')).get('average_rating')
+        context['average_rating'] = round(
+            average_rating, 1) if average_rating is not None else 0
         context['has_rated'] = False
 
         if self.request.user.is_authenticated:
-            existing_rating = ProductRating.objects.filter(product=product, user=self.request.user).first()
+            existing_rating = ProductRating.objects.filter(
+                product=product,
+                user=self.request.user).first()
             if existing_rating:
                 context['has_rated'] = True
 
@@ -61,9 +69,13 @@ class ProductDetailView(DetailView):
             product = self.get_object()
             rating_value = request.POST.get('rating')
 
-            existing_rating = ProductRating.objects.filter(product=product, user=request.user).first()
+            existing_rating = ProductRating.objects.filter(
+                product=product,
+                user=request.user).first()
             if existing_rating:
-                return HttpResponseRedirect(reverse('products:product_detail', args=(product.pk,)))
+                return HttpResponseRedirect(reverse(
+                    'products:product_detail',
+                    args=(product.pk,)))
 
             if rating_value:
                 rating = ProductRating.objects.create(
@@ -71,7 +83,8 @@ class ProductDetailView(DetailView):
                     user=request.user,
                     rating=rating_value
                 )
-                return HttpResponseRedirect(reverse('products:product_detail', args=(product.pk,)))
+                return HttpResponseRedirect(reverse(
+                    'products:product_detail', args=(product.pk,)))
 
         return super().post(request, *args, **kwargs)
 
@@ -91,7 +104,9 @@ def add_comment(request, product_id):
     else:
         form = CommentForm()
 
-    return render(request, 'add_comment.html', {'product': product, 'form': form})
+    return render(request,
+                  'add_comment.html',
+                  {'product': product, 'form': form})
 
 
 @login_required
@@ -106,7 +121,10 @@ def edit_comment(request, comment_id):
     else:
         form = CommentForm(instance=comment)
 
-    return render(request, 'edit_comment.html', {'comment': comment, 'form': form})
+    return render(
+        request,
+        'edit_comment.html',
+        {'comment': comment, 'form': form})
 
 
 @login_required

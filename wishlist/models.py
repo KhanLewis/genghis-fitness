@@ -12,7 +12,8 @@ class Wishlist(models.Model):
 
 
 class WishlistItem(models.Model):
-    wishlist = models.ForeignKey(Wishlist, related_name='items', on_delete=models.CASCADE)
+    wishlist = models.ForeignKey(
+        Wishlist, related_name='items', on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     size = models.CharField(max_length=20, null=True)
 
