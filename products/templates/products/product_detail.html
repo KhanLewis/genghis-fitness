@@ -111,13 +111,16 @@
                         <p>{{ comment.content }}</p>
                         <p class="comment-user">Posted by: {{ comment.user.username }}</p>
                         {% if user.is_authenticated and comment.user == user %}
-                            <a href="{% url 'products:edit_comment' comment_id=comment.id %}" class="btn btn-primary">Edit</a>
-                            <form method="post" action="{% url 'products:delete_comment' comment_id=comment.id %}">
-                                {% csrf_token %}
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                            </form>
+                            <div class="btn-group" role="group">
+                                <a href="{% url 'products:edit_comment' comment_id=comment.id %}" class="btn btn-primary mr-2">Edit</a>
+                                <form method="post" action="{% url 'products:delete_comment' comment_id=comment.id %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </div>
                         {% endif %}
                     </div>
+                    <hr> <!-- Horizontal rule to separate comments -->
                 {% empty %}
                     <p>No comments yet.</p>
                 {% endfor %}
@@ -135,4 +138,5 @@
         </div>
     </div>
 </div>
+
 {% endblock %}
