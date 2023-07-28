@@ -39,8 +39,9 @@ Welcome to Genghis Fitness, your ultimate destination for all your fitness needs
  * Genghis Fitness has revolutionized the online fitness industry by seamlessly blending fitness and fashion. Their business model, characterized by online accessibility, innovative fitness apparel, community support, technological advancements, and continuous adaptation, has propelled them to the forefront of the industry. By empowering individuals to express their style while pursuing their fitness goals, Genghis Fitness has redefined the way people approach online fitness and fashion. 
 
 ## **ER Diagram**
+* The diagram below shows the connection between each model within this project.
 ![ER Diagram](media/readme/erdiagram.png)
-next
+
 
 ## **Wireframes**
 ### Home page
