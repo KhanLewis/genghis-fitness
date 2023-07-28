@@ -29,7 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'my_secret_key'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['genghis-fitness-0467655b3c90.herokuapp.com', '8000-khanlewis-genghisfitnes-ccg4r300os6.ws-eu102.gitpod.io']
 
