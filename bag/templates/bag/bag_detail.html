@@ -55,7 +55,7 @@
                                     <h4>{{ item.product.name }}</h4>
                                 </div>
                                 <div class="col-12 col-sm-6 order-sm-last">
-                                    <p class="my-0">Price Each: ${{ item.product.price }}</p>
+                                    <p class="my-0">Price Each: £{{ item.product.price }}</p>
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <!-- Remove Button -->
@@ -87,7 +87,7 @@
                         </div>
                         <div class="row">
                             <div class="col text-right">
-                                <h4>Total: ${{ total }}</h4>
+                                <h4>Total: £{{ total }}</h4>
                                 <a href="{% url 'checkout' %}" class="btn btn-primary btn-dark">Checkout</a>
                             </div>
                         </div>
@@ -113,7 +113,7 @@
                                         <h4>{{ item.product.name }}</h4>
                                     </td>
                                     <td class="py-3">
-                                        <p class="my-0">$ {{ item.product.price }}</p>
+                                        <p class="my-0">£ {{ item.product.price }}</p>
                                     </td>
                                     <td>
                                         <p class="my-0">{% if item.product.has_sizes %}{{ item.size|upper }}{% else %}N/A{% endif %}</p>
@@ -136,7 +136,7 @@
                             {% endfor %}
                             <tr>
                                 <td colspan="5" class="pt-5 text-right">
-                                    <h4>Total: ${{ total }}</h4>
+                                    <h4>Total: £{{ total }}</h4>
                                 </td>
                                 <td class="text-right">
                                     <a href="{% url 'checkout' %}" class="btn btn-primary btn-dark">Checkout</a>

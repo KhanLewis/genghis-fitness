@@ -40,6 +40,7 @@ Welcome to Genghis Fitness, your ultimate destination for all your fitness needs
 
 ## **ER Diagram**
 ![ER Diagram](media/readme/erdiagram.png)
+next
 
 ## **Wireframes**
 ### Home page
@@ -253,7 +254,7 @@ No issues found, using PEP8
 ## Sign up page 
 * Step 1: The user will click on the signup button on the nav bar
 * Step 2: The user will see a form with the field’s Email, Email again, username, password and password again.
-* Step 3: The user will click sign up and they will be redirected to the login success page that displays a message to verify their email address and a button to return to the homepage
+* Step 3: The user will click sign up and they will be redirected to the login success page that displays a message to verify their email address and a button to return to the homepage.
 ![sign up page](media/readme/sign_up.png)
 
 ## Signout page
